@@ -7,7 +7,7 @@ import time
 
 face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 model = cv2.face.LBPHFaceRecognizer_create()
-model.read("model.yml")
+model.read("model.h5")
 label_dict = np.load("labels.npy", allow_pickle=True).item()
 reverse_label_dict = {v: k for k, v in label_dict.items()}
 
