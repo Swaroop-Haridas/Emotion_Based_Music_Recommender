@@ -81,8 +81,8 @@ Each folder contains facial images corresponding to a specific emotion used for 
 Clone the repository:
 
 ```bash
-git clone <repository-url>
-cd Emotion_Music_Recommendation
+git clone https://github.com/Swaroop-Haridas/Emotion_Based_Music_Recommender.git
+cd Emotion_Based_Music_Recommender
 ```
 
 Install dependencies:
