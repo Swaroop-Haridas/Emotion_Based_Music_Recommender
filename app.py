@@ -38,7 +38,7 @@ if st.button("Start Camera") and not st.session_state.detected:
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
-            st.error("❌ Could not access webcam.")
+            st.error("Could not access webcam.")
             break
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -69,11 +69,11 @@ if st.button("Start Camera") and not st.session_state.detected:
     cap.release()
 
 if st.session_state.get("emotion"):
-    status_placeholder.success(f"🎯 Emotion Detected: **{st.session_state['emotion'].upper()}**")
+    status_placeholder.success(f"Emotion Detected: **{st.session_state['emotion'].upper()}**")
     songs_df = get_songs_for_emotion(st.session_state['emotion'])
 
     if not songs_df.empty:
-        st.subheader("🎵 Recommended Songs")
+        st.subheader("Recommended Songs")
         st.dataframe(songs_df)
     else:
         st.warning("No songs found for this emotion.")
