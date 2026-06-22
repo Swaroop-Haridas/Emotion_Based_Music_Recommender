@@ -9,7 +9,6 @@ face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 model = cv2.face.LBPHFaceRecognizer_create()
 model.read("model.h5")
 label_dict = np.load("labels.npy", allow_pickle=True).item()
-reverse_label_dict = {v: k for k, v in label_dict.items()}
 
 def get_songs_for_emotion(emotion):
     path = os.path.join("songs", f"{emotion.lower()}.csv")
@@ -22,7 +21,8 @@ def get_songs_for_emotion(emotion):
     return pd.DataFrame()
 
 st.set_page_config(page_title="Emotion Music Recommender", layout="centered")
-st.title("🎭 Emotion-Based Music Recommender")
+st.title("Emotion-Based Music Recommender")
+st.markdown("""Detect your facial emotion in real time and receive personalized music recommendations based on your mood.""")
 
 if "detected" not in st.session_state:
     st.session_state.detected = False
@@ -46,7 +46,7 @@ if st.button("Start Camera") and not st.session_state.detected:
 
         for (x, y, w, h) in faces:
             roi_gray = gray[y:y+h, x:x+w]
-            roi_resized = cv2.resize(roi_gray, (200, 200))
+            roi_resized = cv2.resize(roi_gray, (100, 100))
             label_id, confidence = model.predict(roi_resized)
             detected_emotion = label_dict[label_id]
 
