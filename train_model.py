@@ -7,7 +7,7 @@ data_dir = "train"
 model_path = "model.h5"
 label_map_path = "labels.npy"
 
-emotions = ["angry", "disgust", "fearful", "happy", "neutral", "sad", "surprise"]
+emotions = ["angry", "disgust", "fear", "happy", "neutral", "sad", "surprise"]
 
 faces = []
 labels = []
