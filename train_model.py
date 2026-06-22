@@ -4,7 +4,7 @@ import numpy as np
 import random
 
 data_dir = "train"
-model_path = "model.yml"
+model_path = "model.h5"
 label_map_path = "labels.npy"
 
 emotions = ["angry", "disgusted", "fearful", "happy", "neutral", "sad", "surprised"]
@@ -36,7 +36,7 @@ for emotion in emotions:
 
     current_label += 1
 
-print(f"✅ Loaded {len(faces)} samples. Training model...")
+print(f"Loaded {len(faces)} samples. Training model...")
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.train(faces, np.array(labels))
@@ -44,4 +44,4 @@ recognizer.train(faces, np.array(labels))
 recognizer.save(model_path)
 np.save(label_map_path, label_dict)
 
-print("✅ Training complete. Model and labels saved.")
+print("Training complete. Model and labels saved.")
